@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WynnRP-WebUI</title>
+    <style>
+        .bg {
+            position: fixed;
+            background-color: #333;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background-color: rgb(85, 134, 80);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            z-index: 100;
+            padding-left: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background-color: rgb(85, 134, 80);
+            color: #fff;
+            display: flex;
+            align-items: left;
+            justify-content: left;
+            padding-left: 10px;
+            padding-bottom: 10px;
+            z-index: 50;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .download-buttons {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            background-color: #333;
+        }
+        
+        .buttons {
+            background-color: #2d70ab;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            z-index: 25;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        a:visited {
+            color: blue;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script>
+        const url = "https://raw.githubusercontent.com/quartzexpressDEV/wynncraft-resourcepacks/main/packs.json";
+
+        function dl17() {
+            axios.get(url)
+                .then(function(response) {
+                    // handle success
+                    window.open(response.data["packs"][0]["1.17"]);
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                });
+        }
+
+        function dl15() {
+            axios.get(url)
+                .then(function(response) {
+                    // handle success
+                    window.open(response.data["packs"][0]["1.15"]);
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                });
+
+        }
+
+        function dl13() {
+            axios.get(url)
+                .then(function(response) {
+                    // handle success
+                    window.open(response.data["packs"][0]["1.13"]);
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                });
+
+        }
+
+        function dl12() {
+            axios.get(url)
+                .then(function(response) {
+                    // handle success
+                    window.open(response.data["packs"][0]["1.12"]);
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                });
+        }
+    </script>
+
+</head>
+
+<body style="margin:0;">
+    <div class="bg">
+        <div class="top-bar">
+            <nav>
+                <header>
+                    <h1>WynnRP-WebUI</h1>
+                </header>
+            </nav>
+        </div>
+        <main>
+            <div class="download-buttons">
+                <button onclick="dl17()" class="buttons" id="1.17">Download for 1.17-latest</button>
+                <button onclick="dl15()" class="buttons" id="1.15">Download for 1.15-1.16</button>
+                <button onclick="dl13()" class="buttons" id="1.13">Download for 1.13-1.14</button>
+                <button onclick="dl12()" class="buttons" id="1.12">Download for 1.9-1.12</button>
+            </div>
+
+        </main>
+        <div class="bottom-bar">
+            <footer>
+                <p>This website is not affiliated with Minecraft nor Mojang nor Wynncraft
+                    <br>
+                    <a target="_blank" rel="noreferrer noopener" href="https://github.com/quartzexpressDEV/WynnRP-WebUI">View source code on GitHub.</a>
+                </p>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
