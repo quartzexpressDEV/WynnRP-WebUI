@@ -87,12 +87,31 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script>
         const url = "https://raw.githubusercontent.com/quartzexpressDEV/wynncraft-resourcepacks/main/packs.json";
+        const regex = new RegExp('(.*)\/');
+
+        function downloadFile(url, fileName) {
+            fetch(url, {
+                    method: 'get',
+                    mode: 'no-cors',
+                    referrerPolicy: 'no-referrer'
+                })
+                .then(res => res.blob())
+                .then(res => {
+                    const aElement = document.createElement('a');
+                    aElement.setAttribute('download', fileName);
+                    const href = URL.createObjectURL(res);
+                    aElement.href = href;
+                    aElement.setAttribute('target', '_blank');
+                    aElement.click();
+                    URL.revokeObjectURL(href);
+                });
+        };
 
         function dl17() {
             axios.get(url)
                 .then(function(response) {
                     // handle success
-                    window.open(response.data["packs"][0]["1.17"]);
+                    downloadFile(response.data["packs"][0]["1.17"], response.data["packs"][0]["1.17"].replace(regex, ""));
                 })
                 .catch(function(error) {
                     // handle error
@@ -104,7 +123,7 @@
             axios.get(url)
                 .then(function(response) {
                     // handle success
-                    window.open(response.data["packs"][0]["1.15"]);
+                    downloadFile(response.data["packs"][0]["1.15"], response.data["packs"][0]["1.15"].replace(regex, ""));
                 })
                 .catch(function(error) {
                     // handle error
@@ -117,7 +136,7 @@
             axios.get(url)
                 .then(function(response) {
                     // handle success
-                    window.open(response.data["packs"][0]["1.13"]);
+                    downloadFile(response.data["packs"][0]["1.13"], response.data["packs"][0]["1.13"].replace(regex, ""));
                 })
                 .catch(function(error) {
                     // handle error
@@ -130,7 +149,7 @@
             axios.get(url)
                 .then(function(response) {
                     // handle success
-                    window.open(response.data["packs"][0]["1.12"]);
+                    downloadFile(response.data["packs"][0]["1.12"], response.data["packs"][0]["1.12"].replace(regex, ""));
                 })
                 .catch(function(error) {
                     // handle error
