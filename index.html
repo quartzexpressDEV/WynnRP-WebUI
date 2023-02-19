@@ -104,6 +104,19 @@
             document.body.removeChild(a)
         }
 
+        function getVersionData() {
+            const regex = /\d\.\d\.\d/gi;
+            axios.get(url)
+                .then(function(response) {
+                    // handle success
+                    document.getElementById("version").innerHTML = response.data["packs"][0]["note"].match(regex);
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                });
+        }
+
         function dl17() {
             axios.get(url)
                 .then(function(response) {
@@ -157,7 +170,7 @@
 
 </head>
 
-<body style="margin:0;">
+<body style="margin:0;" onload="getVersionData()">
     <div class="bg">
         <div class="top-bar">
             <nav>
@@ -174,10 +187,11 @@
                 <button type="button" onclick="dl12()" class="buttons" id="1.12">Download for 1.9-1.12</button>
             </div>
 
+
         </main>
         <div class="bottom-bar">
             <footer>
-                <p>This website is not affiliated with Minecraft nor Mojang nor Wynncraft
+                <p>This website is not affiliated with Minecraft nor Mojang nor Wynncraft. <span style="color: aquamarine;">Pack for version: <span id="version"></span></span>
                     <br>
                     <a target="_blank" rel="noreferrer noopener" href="https://github.com/quartzexpressDEV/WynnRP-WebUI">View source code on GitHub.</a>
                 </p>
