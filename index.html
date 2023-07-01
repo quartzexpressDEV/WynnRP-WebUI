@@ -94,83 +94,28 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script>
         const url = "https://raw.githubusercontent.com/quartzexpressDEV/wynncraft-resourcepacks/main/packs.json";
+        const regex = /\d\.\d\.\d/gi; // TODO: Handle versions in a better way
+        window.onload = function() {
 
-        function downloadFile(url) {
-            const a = document.createElement('a')
-            a.href = url
-            a.download = url.split('/').pop()
-            document.body.appendChild(a)
-            a.click()
-            document.body.removeChild(a)
-        }
-
-        function getVersionData() {
-            const regex = /\d\.\d\.\d/gi;
             axios.get(url)
                 .then(function(response) {
                     // handle success
+                    document.getElementById("1.17").href = response.data["packs"][0]["1.17"];
+                    document.getElementById("1.15").href = response.data["packs"][0]["1.15"];
+                    document.getElementById("1.13").href = response.data["packs"][0]["1.13"];
+                    document.getElementById("1.12").href = response.data["packs"][0]["1.12"];
                     document.getElementById("version").innerHTML = response.data["packs"][0]["note"].match(regex);
                 })
                 .catch(function(error) {
                     // handle error
                     console.log(error);
                 });
-        }
-
-        function dl17() {
-            axios.get(url)
-                .then(function(response) {
-                    // handle success
-                    downloadFile(response.data["packs"][0]["1.17"]);
-                })
-                .catch(function(error) {
-                    // handle error
-                    console.log(error);
-                });
-        }
-
-        function dl15() {
-            axios.get(url)
-                .then(function(response) {
-                    // handle success
-                    downloadFile(response.data["packs"][0]["1.15"]);
-                })
-                .catch(function(error) {
-                    // handle error
-                    console.log(error);
-                });
-
-        }
-
-        function dl13() {
-            axios.get(url)
-                .then(function(response) {
-                    // handle success
-                    downloadFile(response.data["packs"][0]["1.13"]);
-                })
-                .catch(function(error) {
-                    // handle error
-                    console.log(error);
-                });
-
-        }
-
-        function dl12() {
-            axios.get(url)
-                .then(function(response) {
-                    // handle success
-                    downloadFile(response.data["packs"][0]["1.12"]);
-                })
-                .catch(function(error) {
-                    // handle error
-                    console.log(error);
-                });
-        }
+        };
     </script>
 
 </head>
 
-<body style="margin:0;" onload="getVersionData()">
+<body style="margin:0;">
     <div class="bg">
         <div class="top-bar">
             <nav>
@@ -181,10 +126,10 @@
         </div>
         <main>
             <div class="download-buttons">
-                <button type="button" onclick="dl17()" class="buttons" id="1.17">Download for 1.17-latest</button>
-                <button type="button" onclick="dl15()" class="buttons" id="1.15">Download for 1.15-1.16</button>
-                <button type="button" onclick="dl13()" class="buttons" id="1.13">Download for 1.13-1.14</button>
-                <button type="button" onclick="dl12()" class="buttons" id="1.12">Download for 1.9-1.12</button>
+                <a class="buttons" id="1.17">Download for 1.17-latest</a>
+                <a class="buttons" id="1.15">Download for 1.15-1.16</a>
+                <a class="buttons" id="1.13">Download for 1.13-1.14</a>
+                <a class="buttons" id="1.12">Download for 1.9-1.12</a>
             </div>
 
 
