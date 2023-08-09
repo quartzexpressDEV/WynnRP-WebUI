@@ -104,7 +104,7 @@
                     document.getElementById("1.15").href = response.data["packs"][0]["1.15"];
                     document.getElementById("1.13").href = response.data["packs"][0]["1.13"];
                     document.getElementById("1.12").href = response.data["packs"][0]["1.12"];
-                    document.getElementById("version").innerHTML = response.data["packs"][0]["note"].match(regex);
+                    document.getElementById("version").innerHTML = response.data["packs"][0]["note"];
                 })
                 .catch(function(error) {
                     // handle error
