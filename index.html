@@ -100,11 +100,8 @@
             axios.get(url)
                 .then(function(response) {
                     // handle success
-                    document.getElementById("1.17").href = response.data["packs"][0]["1.17"];
-                    document.getElementById("1.15").href = response.data["packs"][0]["1.15"];
-                    document.getElementById("1.13").href = response.data["packs"][0]["1.13"];
-                    document.getElementById("1.12").href = response.data["packs"][0]["1.12"];
-                    document.getElementById("version").innerHTML = response.data["packs"][0]["note"].match(regex);
+                    document.getElementById("1.16").href = response.data["packs"][0]["1.16"];
+                    document.getElementById("version").innerHTML = response.data["packs"][0]["note"];
                 })
                 .catch(function(error) {
                     // handle error
@@ -126,10 +123,7 @@
         </div>
         <main>
             <div class="download-buttons">
-                <a class="buttons" id="1.17">Download for 1.17-latest</a>
-                <a class="buttons" id="1.15">Download for 1.15-1.16</a>
-                <a class="buttons" id="1.13">Download for 1.13-1.14</a>
-                <a class="buttons" id="1.12">Download for 1.9-1.12</a>
+                <a class="buttons" id="1.16">Download for 1.16-latest</a>
             </div>
 
 
