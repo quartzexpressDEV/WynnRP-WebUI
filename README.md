@@ -3,7 +3,7 @@ Website to download recent Wynncraft resource packs
 
 there really isnt much to see here
 
-
+this no longer works, use https://github.com/quartzexpressDEV/WynncraftResourceDownloader
 
 
 
